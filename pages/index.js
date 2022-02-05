@@ -10,21 +10,56 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
 
-    this.itemList = this.genItemList();
-    this.tryToLoadMore.bind(this);
+    this.page = 0;
+    this.tryToLoadMore = this.tryToLoadMore.bind(this);
+    this.loadArticlesFromServer = this.loadArticlesFromServer.bind(this);
+    this.state = { itemList: [] }
   }
 
-  genItemList() {
-    let result = [];
-    for (let i = 0; i < 20; i++) {
-      let hc = <HomeCard index={i} />
-      result.push(hc);
-    }
-    return result;
+  componentDidMount() {
+    this.loadArticlesFromServer();
   }
 
   tryToLoadMore() {
     console.log("tryToLoadMore");
+
+    this.page++;
+    this.loadArticlesFromServer();
+  }
+
+  async loadArticlesFromServer() {
+    const theUrl = "http://127.0.0.1:9002/articles?page=" + this.page;
+    const articlesData = await fetch(theUrl);
+    const articlesJson = await articlesData.json();
+    const articleList = articlesJson["data"];
+    console.log("articleList:", articleList);    
+
+    this.state.itemList.push(articleList[this.page]);
+
+    console.log("itemListitemList:", this.state.itemList);
+    var newestArticles = this.state.itemList;
+    // var newestArticles = [...this.state.itemList, ...articleList];
+    // this.state.itemList.forEach(e => {
+    //   newestArticles.push(e);
+    // });
+    // newestArticles = newestArticles.concat(this.state.itemList);
+    // console.log("newestArticles1111:", newestArticles);
+    // for (let e in this.state.itemList) {
+    //   newestArticles.push(e);
+    // }
+    // articleList.forEach(e => {
+    //   newestArticles.push(e);
+    // });
+    // newestArticles = newestArticles.concat(articleList);
+    // console.log("newestArticles2222:", newestArticles);    
+    // if (this.page > 0) {
+    //   Array.prototype.push.apply(newestArticles, this.state.itemList);
+    // }
+
+    Array.prototype.push.apply(newestArticles, articleList);
+    
+    this.setState({ itemList: newestArticles });
+    console.log("newestArticles: ", articleList.length);
   }
 
   render() {
@@ -38,8 +73,10 @@ class Home extends React.Component {
 
         <NavArea />
 
-        <div className='px-2 py-2 gap-8 columns-2xs space-y-2  bg-blue-100' id='groundarea'>
-          {this.itemList}
+        <div className='px-2 py-2 columns-2xs ' id='groundarea'>
+          {this.state.itemList.map((item, idx) => {
+            return <HomeCard key={idx} index={idx} itemData={item} />
+          })}
         </div>
 
         <button className="w-full mt-3 py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75" onClick={this.tryToLoadMore}>
