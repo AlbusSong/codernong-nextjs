@@ -13,7 +13,7 @@ class HomeCard extends React.Component {
     render() {
         const randomH = this.randomRange(200, 500);
         return (
-            <div className='w-full break-inside-avoid-column overflow-y-hidden bg-red-200' style={{ "height": `${randomH}px` }}>
+            <div key={this.index} className='w-full break-inside-avoid-column overflow-y-hidden bg-red-200' style={{ "height": `${randomH}px` }}>
                 索引：{this.index}
             </div>
         );
