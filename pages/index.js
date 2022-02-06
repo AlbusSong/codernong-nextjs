@@ -32,9 +32,9 @@ class Home extends React.Component {
     const articlesData = await fetch(theUrl);
     const articlesJson = await articlesData.json();
     const articleList = articlesJson["data"];
-    console.log("articleList:", articleList);    
+    console.log("articleList:", articleList);
 
-    this.state.itemList.push(articleList[this.page]);
+    // this.state.itemList.push(articleList[this.page]);
 
     console.log("itemListitemList:", this.state.itemList);
     var newestArticles = this.state.itemList;
@@ -57,7 +57,7 @@ class Home extends React.Component {
     // }
 
     Array.prototype.push.apply(newestArticles, articleList);
-    
+
     this.setState({ itemList: newestArticles });
     console.log("newestArticles: ", articleList.length);
   }
@@ -79,9 +79,11 @@ class Home extends React.Component {
           })}
         </div>
 
-        <button className="w-full mt-3 py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75" onClick={this.tryToLoadMore}>
-          加载更多
-        </button>
+        <div className='px-4' id="buttonLoadMore">
+          <button className="w-full h-10 mt-3 py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75" onClick={this.tryToLoadMore}>
+            加载更多
+          </button>
+        </div>
 
         <Footer />
       </div>
