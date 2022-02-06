@@ -22,13 +22,13 @@ class ArticleDetail extends React.Component {
                     <h1 className='text-3xl'>
                         {this.articleDetail.zhTitle}
                     </h1>
-                    <div className='my-4 bg-gray-100' id="questionArea">
+                    <div className='my-4 px-2 py-2 rounded-md shadow-md bg-gray-100' id="questionArea">
                         <div dangerouslySetInnerHTML={{ __html: this.articleDetail.zhQuestionBodyHtml }} />
                     </div>
-                    <div className='my-4 bg-gray-100' id="answersArea">
+                    <div className='my-5 bg-gray-100' id="answersArea">
                         {zhAnswerBodyHtmlList.map((itemHtml, idx) => {
                             return (
-                                <div className='my-4 bg-gray-100' id={"answer-" + idx}>
+                                <div className={`my-4 px-2 py-2 rounded-md shadow-md ${idx % 2 == 0 ? "bg-gray-50" : "bg-blue-50"}`} id={"answer-" + idx}>
                                     <div dangerouslySetInnerHTML={{ __html: itemHtml }} />
                                 </div>
                             );
@@ -50,19 +50,7 @@ export async function getStaticProps(context) {
     const articleDetailData = await fetch("http://127.0.0.1:9002/articleDetail?articleId=" + encodeURIComponent(articleId));
     const articleDetailJson = await articleDetailData.json();
     const articleDetail = articleDetailJson["data"];
-    // console.log("articleDetail:", articleDetail);
 
-    // const category = params.category;
-    // const itemdetail = params.itemdetail;
-    // let path = "/" + category + "/" + itemdetail;
-    // const requestMenuData = await fetch(("http://127.0.0.1:9000/menulist?webpath=" + encodeURIComponent(category)));
-    // const menuData = await requestMenuData.json();
-
-    // const requestSeoData = await fetch(("http://127.0.0.1:9000/seo?uri=" + encodeURIComponent(path)));
-    // const seoData = await requestSeoData.json();
-
-    // const requestArticleData = await fetch(("http://127.0.0.1:9000/articlepath?articlepath=" + encodeURIComponent(path)));
-    // const articleData = await requestArticleData.text();
     return {
         props: {
             articleDetail
