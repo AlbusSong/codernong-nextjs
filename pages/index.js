@@ -10,10 +10,10 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
 
-    this.page = 0;
+    this.page = 1;
     this.tryToLoadMore = this.tryToLoadMore.bind(this);
     this.loadArticlesFromServer = this.loadArticlesFromServer.bind(this);
-    this.state = { itemList: [] }
+    this.state = { itemList: props.initialArticleList }
   }
 
   componentDidMount() {
@@ -32,34 +32,12 @@ class Home extends React.Component {
     const articlesData = await fetch(theUrl);
     const articlesJson = await articlesData.json();
     const articleList = articlesJson["data"];
-    console.log("articleList:", articleList);
 
-    // this.state.itemList.push(articleList[this.page]);
-
-    console.log("itemListitemList:", this.state.itemList);
     var newestArticles = this.state.itemList;
-    // var newestArticles = [...this.state.itemList, ...articleList];
-    // this.state.itemList.forEach(e => {
-    //   newestArticles.push(e);
-    // });
-    // newestArticles = newestArticles.concat(this.state.itemList);
-    // console.log("newestArticles1111:", newestArticles);
-    // for (let e in this.state.itemList) {
-    //   newestArticles.push(e);
-    // }
-    // articleList.forEach(e => {
-    //   newestArticles.push(e);
-    // });
-    // newestArticles = newestArticles.concat(articleList);
-    // console.log("newestArticles2222:", newestArticles);    
-    // if (this.page > 0) {
-    //   Array.prototype.push.apply(newestArticles, this.state.itemList);
-    // }
 
     Array.prototype.push.apply(newestArticles, articleList);
 
     this.setState({ itemList: newestArticles });
-    console.log("newestArticles: ", articleList.length);
   }
 
   render() {
@@ -92,3 +70,16 @@ class Home extends React.Component {
 }
 
 export default Home;
+
+export async function getStaticProps(context) {
+  const theUrl = "http://127.0.0.1:9002/articles?page=0";
+  const articlesData = await fetch(theUrl);
+  const articlesJson = await articlesData.json();
+  const initialArticleList = articlesJson["data"];
+
+  return {
+      props: {
+        initialArticleList
+      }
+  }
+}

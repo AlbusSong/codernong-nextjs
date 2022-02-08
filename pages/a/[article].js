@@ -34,7 +34,7 @@ export async function getStaticProps(context) {
     const articleDetailData = await fetch("http://127.0.0.1:9002/articleDetail?articleId=" + encodeURIComponent(articleId));
     const articleDetailJson = await articleDetailData.json();
     const articleDetail = articleDetailJson["data"];
-
+    console.log("articleDetail:", articleDetail);
     return {
         props: {
             articleDetail

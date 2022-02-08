@@ -19,7 +19,7 @@ class ArticleBody extends React.Component {
                     <div className='my-5' id="answersArea">
                         {zhAnswerBodyHtmlList.map((itemHtml, idx) => {
                             return (
-                                <div className={`swArea my-4 px-2 py-2 rounded-md shadow-md ring-2 ring-blue-500 ring-offset-0 ${idx % 2 == 0 ? "bg-slate-200" : "bg-blue-50"}`} id={"answer-" + idx}>
+                                <div className={`swArea my-4 px-2 py-2 rounded-md shadow-md ring-2 ring-blue-500 ring-offset-0 ${idx % 2 == 0 ? "bg-slate-200" : "bg-blue-50"}`} id={"answer-" + idx} key={"answer-" + idx}>
                                     <div dangerouslySetInnerHTML={{ __html: itemHtml }} />
                                 </div>
                             );
