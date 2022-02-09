@@ -8,8 +8,8 @@ class Footer extends React.Component {
     render() {
         return (
             <div className="h-20 w-full mt-2 flex flex-col items-center justify-center bg-gray-700 text-white">
-                <p>Copyright © 2021-2022 geekrookie.com</p>
-                <p>Contact: <a style={{"text-decoration":"underline"}}>contact@geekrookie.com</a> </p>
+                <p>Copyright © 2022 codernong.com</p>
+                <p>Contact: <a style={{"text-decoration":"underline"}}>contact@codernong.com</a> </p>
             </div>
         )
     }
