@@ -28,9 +28,20 @@ class Home extends React.Component {
     this.loadArticlesFromServer();
   }
 
+  generateExceptionIds() {
+    let idList = [];
+    for (let i = 0; i < this.state.itemList.length; i++) {
+      const item = this.state.itemList[i];
+      idList.push(item.id);
+    }
+    console.log("idList:", idList);
+    return idList.join(",");
+  }
+
   async loadArticlesFromServer() {
+    const idListStr = this.generateExceptionIds();
     // const theUrl = "https://codernong.com:9002/articles?page=" + this.page;
-    const theUrl = URL_PREFIX + "articles?page=" + this.page;
+    const theUrl = URL_PREFIX + "articles?page=" + this.page + "&exceptionIds=" + encodeURIComponent(idListStr);
     const articlesData = await fetch(theUrl);
     const articlesJson = await articlesData.json();
     const articleList = articlesJson["data"];
@@ -76,8 +87,7 @@ export default Home;
 
 export async function getStaticProps(context) {
   // const theUrl = "http://127.0.0.1:9002/articles?page=0";
-  console.log("URL_PREFIX:", URL_PREFIX);
-  const theUrl = URL_PREFIX + "articles?page=0";
+  const theUrl = URL_PREFIX + "articles?page=0&exceptionIds=" + encodeURIComponent("0");
   const articlesData = await fetch(theUrl);
   const articlesJson = await articlesData.json();
   const initialArticleList = articlesJson["data"];
