@@ -10,10 +10,10 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
 
-    this.page = 0;
+    this.page = 1;
     this.tryToLoadMore = this.tryToLoadMore.bind(this);
     this.loadArticlesFromServer = this.loadArticlesFromServer.bind(this);
-    this.state = { itemList: [] }
+    this.state = { itemList: props.initialArticleList }
   }
 
   componentDidMount() {
@@ -72,18 +72,18 @@ class Home extends React.Component {
 
 export default Home;
 
-// export async function getStaticProps(context) {
-//   const theUrl = "https://143.198.180.180:9002/articles?page=0";
-//   const articlesData = await fetch(theUrl);
-//   const articlesJson = await articlesData.json();
-//   const initialArticleList = articlesJson["data"];
+export async function getStaticProps(context) {
+  const theUrl = "https://codernong.com:9002/articles?page=0";
+  const articlesData = await fetch(theUrl);
+  const articlesJson = await articlesData.json();
+  const initialArticleList = articlesJson["data"];
 
-//   return {
-//       props: {
-//         initialArticleList
-//       }
-//   }
-// }
+  return {
+      props: {
+        initialArticleList
+      }
+  }
+}
 
 
 
