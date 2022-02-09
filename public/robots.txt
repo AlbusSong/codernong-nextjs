@@ -6,4 +6,4 @@ Allow: /
 Host: https://codernong.com
 
 # Sitemaps
-Sitemap: https://codernong.com/sitemap.xml
+Sitemap: https://codernong.com/sitemap-xml
