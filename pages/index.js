@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Footer from '../components/Footer.js';
 import NavArea from '../components/NavArea';
 import HomeCard from '../components/HomeCard';
+import { URL_PREFIX } from '../zothers/GlobalVar';
 
 class Home extends React.Component {
   constructor(props) {
@@ -28,7 +29,8 @@ class Home extends React.Component {
   }
 
   async loadArticlesFromServer() {
-    const theUrl = "https://codernong.com:9002/articles?page=" + this.page;
+    // const theUrl = "https://codernong.com:9002/articles?page=" + this.page;
+    const theUrl = URL_PREFIX + "articles?page=" + this.page;
     const articlesData = await fetch(theUrl);
     const articlesJson = await articlesData.json();
     const articleList = articlesJson["data"];
@@ -73,7 +75,9 @@ class Home extends React.Component {
 export default Home;
 
 export async function getStaticProps(context) {
-  const theUrl = "https://codernong.com:9002/articles?page=0";
+  // const theUrl = "http://127.0.0.1:9002/articles?page=0";
+  console.log("URL_PREFIX:", URL_PREFIX);
+  const theUrl = URL_PREFIX + "articles?page=0";
   const articlesData = await fetch(theUrl);
   const articlesJson = await articlesData.json();
   const initialArticleList = articlesJson["data"];

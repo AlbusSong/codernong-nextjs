@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Footer from '../../components/Footer.js';
 import NavArea from '../../components/NavArea';
 import ArticleBody from '../../components/ArticleBody';
+import { URL_PREFIX } from '../../zothers/GlobalVar';
 
 class ArticleDetail extends React.Component {
     constructor(props) {
@@ -11,7 +12,7 @@ class ArticleDetail extends React.Component {
     }
 
     componentDidMount() {
-        console.log("aaaaaaa:", this.articleDetail.zhTitle);
+        // console.log("aaaaaaa:", this.articleDetail.zhTitle);
     }
 
     render() {
@@ -31,7 +32,7 @@ export async function getStaticProps(context) {
     let params = context.params;
     console.log("params:", params);
     const articleId = params.article;
-    const articleDetailData = await fetch("https://codernong.com:9002/articleDetail?articleId=" + encodeURIComponent(articleId));
+    const articleDetailData = await fetch(URL_PREFIX  + "articleDetail?articleId=" + encodeURIComponent(articleId));
     const articleDetailJson = await articleDetailData.json();
     const articleDetail = articleDetailJson["data"];
     // console.log("articleDetail:", articleDetail);
@@ -43,7 +44,7 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths(context) {
-    const articleIdListData = await fetch("https://codernong.com:9002/articleIdList");
+    const articleIdListData = await fetch(URL_PREFIX + "/articleIdList");
     const articleIdListDataJson = await articleIdListData.json();
     const articleIdList = articleIdListDataJson["data"];
 
