@@ -73,7 +73,7 @@ class Home extends React.Component {
 export default Home;
 
 export async function getStaticProps(context) {
-  const theUrl = "http://127.0.0.1:9002/articles?page=0";
+  const theUrl = "https://127.0.0.1:9002/articles?page=0";
   const articlesData = await fetch(theUrl);
   const articlesJson = await articlesData.json();
   const initialArticleList = articlesJson["data"];
