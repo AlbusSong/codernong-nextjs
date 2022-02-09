@@ -27,14 +27,14 @@ class ArticleDetail extends React.Component {
 
 export default ArticleDetail;
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
     let params = context.params;
     console.log("params:", params);
     const articleId = params.article;
     const articleDetailData = await fetch("http://127.0.0.1:9002/articleDetail?articleId=" + encodeURIComponent(articleId));
     const articleDetailJson = await articleDetailData.json();
     const articleDetail = articleDetailJson["data"];
-    console.log("articleDetail:", articleDetail);
+    // console.log("articleDetail:", articleDetail);
     return {
         props: {
             articleDetail
@@ -42,19 +42,19 @@ export async function getStaticProps(context) {
     }
 }
 
-export async function getStaticPaths(context) {
-    const articleIdListData = await fetch("http://127.0.0.1:9002/articleIdList");
-    const articleIdListDataJson = await articleIdListData.json();
-    const articleIdList = articleIdListDataJson["data"];
+// export async function getStaticPaths(context) {
+//     const articleIdListData = await fetch("http://127.0.0.1:9002/articleIdList");
+//     const articleIdListDataJson = await articleIdListData.json();
+//     const articleIdList = articleIdListDataJson["data"];
 
-    let paths = [];
-    articleIdList.forEach(e => {
-        const p = "/a/" + e;
-        paths.push(p);
-    });
+//     let paths = [];
+//     articleIdList.forEach(e => {
+//         const p = "/a/" + e;
+//         paths.push(p);
+//     });
 
-    return {
-        paths: paths,
-        fallback: false,
-    }
-}
+//     return {
+//         paths: paths,
+//         fallback: false,
+//     }
+// }
