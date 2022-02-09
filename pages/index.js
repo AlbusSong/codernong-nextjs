@@ -13,7 +13,7 @@ class Home extends React.Component {
     this.page = 0;
     this.tryToLoadMore = this.tryToLoadMore.bind(this);
     this.loadArticlesFromServer = this.loadArticlesFromServer.bind(this);
-    this.state = { itemList: props.initialArticleList }
+    this.state = { itemList: [] }
   }
 
   componentDidMount() {
