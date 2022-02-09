@@ -5,7 +5,7 @@ const sitemap = () => {}
 
 export default sitemap;
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
     const articleIdListData = await fetch(URL_PREFIX + "/articleIdList");
     const articleIdListDataJson = await articleIdListData.json();
     const articleIdList = articleIdListDataJson["data"];    
