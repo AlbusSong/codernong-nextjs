@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://codernong.com
+
+# Sitemaps
+Sitemap: https://codernong.com/sitemap.xml
