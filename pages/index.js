@@ -28,7 +28,7 @@ class Home extends React.Component {
   }
 
   async loadArticlesFromServer() {
-    const theUrl = "http://143.198.180.180:9002/articles?page=" + this.page;
+    const theUrl = "https://143.198.180.180:9002/articles?page=" + this.page;
     const articlesData = await fetch(theUrl);
     const articlesJson = await articlesData.json();
     const articleList = articlesJson["data"];
