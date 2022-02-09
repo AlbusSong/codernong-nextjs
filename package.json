@@ -3,7 +3,6 @@
     "private": true,
     "scripts": {
         "dev": "next dev -p 3001",
-        "postbuild": "next-sitemap",
         "build": "next build",
         "start": "next start -p 3001",
         "lint": "next lint -p 3001"
