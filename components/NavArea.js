@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 class NavArea extends React.Component {
     constructor(props) {
@@ -8,10 +9,19 @@ class NavArea extends React.Component {
 
     render() {
         return (
-            <div className='py-10 bg-slate-500 flex   justify-center items-center'>
+            <div className='bg-slate-400'>
                 <Link href='/'>
                     <a>
-                        <h1 className='text-4xl'>程序员常见问题大典</h1>
+                        <div className='flex justify-center items-center'>
+                            <Image 
+                            src="/codernongTransparent.png"
+                            alt="codernong.com logo"
+                            width={110}
+                            height={110}
+                            layout='fixed' 
+                            />
+                        <h1 className='text-4xl font-normal text-stone-800'>程序员常见问题大典</h1>
+                        </div>
                     </a>
                 </Link>
             </div>
