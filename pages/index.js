@@ -14,7 +14,7 @@ class Home extends React.Component {
     this.page = 1;
     this.tryToLoadMore = this.tryToLoadMore.bind(this);
     this.loadArticlesFromServer = this.loadArticlesFromServer.bind(this);
-    this.state = { itemList: props.initialArticleList, isLoading : false }
+    this.state = { itemList: props.initialArticleList, isLoading: false }
   }
 
   componentDidMount() {
@@ -62,8 +62,12 @@ class Home extends React.Component {
       <div className="container mx-auto">
         <Head>
           <title>程序员常见问题大典</title>
-          <meta name="description" content="这里汇集了绝大部分程序员开发过程中会遇到的技术问题, 涉及到各个技术分支, 如Python,git,javascript,html/css,移动端开发等等。" />
+          <meta name="description" content="这里汇集了绝大部分程序员开发过程中会遇到的技术问题, 涉及到各个技术分支, 如Python,git,javascript,html/css,移动端开发等等, 以帮助各位程序员开发者能够迅速解决常见的技术故障." />
           <link rel="icon" href="/codernongLogo.png" />
+          <meta name="keywords" content="码农家园,IT工具网,程序员,开发,问题,编程,github,stackoverflow" />
+          <meta name="author" content="codernong.com" />
+          <meta charset="UTF-8" />
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
         </Head>
 
@@ -76,7 +80,7 @@ class Home extends React.Component {
         </div>
 
         <div className='px-4' id="buttonLoadMore">
-          <button className={`w-full h-12 mt-3 py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75 ${isLoading ? "invisible" : "visible"}`} onClick={ this.tryToLoadMore }>
+          <button className={`w-full h-12 mt-3 py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75 ${isLoading ? "invisible" : "visible"}`} onClick={this.tryToLoadMore}>
             加载更多
           </button>
         </div>
@@ -97,9 +101,9 @@ export async function getStaticProps(context) {
   const initialArticleList = articlesJson["data"];
 
   return {
-      props: {
-        initialArticleList
-      }
+    props: {
+      initialArticleList
+    }
   }
 }
 

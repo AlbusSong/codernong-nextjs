@@ -16,8 +16,20 @@ class ArticleDetail extends React.Component {
     }
 
     render() {
+        const metaTitle = this.articleDetail.zhTitle;
+        const metaKeywords = this.articleDetail.tagList;
+        const metaDescription = this.articleDetail.zhDesc;
         return (
             <div className="container mx-auto">
+                <Head>
+                    <title>{metaTitle}</title>
+                    <meta name="description" content={metaDescription} />
+                    <meta name="keywords" content={"码农家园,IT工具网,程序员,开发,问题,编程,github,stackoverflow," + metaKeywords} />
+                    <meta name="author" content="codernong.com" />
+                    <meta charset="UTF-8" />
+                    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                    <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+                </Head>
                 <NavArea />
                 <ArticleBody articleDetail={this.articleDetail} />
                 <Footer />
@@ -33,10 +45,10 @@ export async function getServerSideProps(context) {
     let params = context.params;
     console.log("params:", params);
     const articleId = params.article;
-    const articleDetailData = await fetch(URL_PREFIX  + "articleDetail?articleId=" + encodeURIComponent(articleId));
+    const articleDetailData = await fetch(URL_PREFIX + "articleDetail?articleId=" + encodeURIComponent(articleId));
     const articleDetailJson = await articleDetailData.json();
     const articleDetail = articleDetailJson["data"];
-    // console.log("articleDetail:", articleDetail);
+    // console.log("articleDetail:", articleDetail["zhDesc"]);
     return {
         props: {
             articleDetail
