@@ -13,14 +13,14 @@ class NavArea extends React.Component {
                 <Link href='/'>
                     <a>
                         <div className='flex justify-center items-center'>
-                            <Image 
-                            src="/codernongTransparent.png"
-                            alt="codernong.com logo"
-                            width={110}
-                            height={110}
-                            layout='fixed' 
+                            <Image
+                                src="/codernongTransparent.png"
+                                alt="codernong.com logo"
+                                width={110}
+                                height={110}
+                                layout='fixed'
                             />
-                        <h1 className='text-4xl font-normal text-stone-800'>程序员常见问题大典</h1>
+                            <h1 className='text-3xl md:text-4xl font-normal text-stone-800'>程序员常见问题大典</h1>
                         </div>
                     </a>
                 </Link>
