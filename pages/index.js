@@ -61,6 +61,7 @@ class Home extends React.Component {
     return (
       <div className="container mx-auto">
         <Head>
+          <meta name="baidu-site-verification" content="code-xhQS7JO1Hs" />
           <title>程序员常见问题大典</title>
           <meta name="description" content="这里汇集了绝大部分程序员开发过程中会遇到的技术问题, 涉及到各个技术分支, 如Python,git,javascript,html/css,移动端开发等等, 以帮助各位程序员开发者能够迅速解决常见的技术故障." />
           <link rel="icon" href="/codernongLogo.png" />
