@@ -106,7 +106,8 @@ export async function getStaticProps(context) {
   return {
     props: {
       initialArticleList
-    }
+    },
+    revalidate: 3600
   }
 }
 
