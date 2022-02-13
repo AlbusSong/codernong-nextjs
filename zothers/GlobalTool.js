@@ -1,3 +1,5 @@
+import path from 'path';
+
 function randomColor() {
     let r = Math.floor(Math.random() * 256);
     let g = Math.floor(Math.random() * 256);
@@ -30,5 +32,12 @@ function randomRange(a, b) {
     return Math.round(Math.random() * (b - a)) + a;
 }
 
+function getRemoteURLPrefix() {
+    
+    const pwd = path.join(process.cwd(), 'posts');
+    console.log("pwd:", pwd);
+    console.log(path.relative(process.cwd(), __filename));
+}
+
 //  export default randomColor;
-export { randomColor, white, lightGrey, getRelativeUrlPath, randomRange }
+export { randomColor, white, lightGrey, getRelativeUrlPath, randomRange, getRemoteURLPrefix }

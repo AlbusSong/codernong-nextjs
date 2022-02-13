@@ -6,6 +6,7 @@ import Footer from '../components/Footer.js';
 import NavArea from '../components/NavArea';
 import HomeCard from '../components/HomeCard';
 import { URL_PREFIX } from '../zothers/GlobalVar';
+// import { getRemoteURLPrefix } from '../zothers/GlobalTool';
 
 class Home extends React.Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
+    // getRemoteURLPrefix();
     this.loadArticlesFromServer();
   }
 

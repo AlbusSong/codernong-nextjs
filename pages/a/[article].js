@@ -40,8 +40,8 @@ class ArticleDetail extends React.Component {
 
 export default ArticleDetail;
 
-// export async function getStaticProps(context) {
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
+// export async function getServerSideProps(context) {
     let params = context.params;
     console.log("params:", params);
     const articleId = params.article;
@@ -52,23 +52,24 @@ export async function getServerSideProps(context) {
     return {
         props: {
             articleDetail
-        }
+        },
+        revalidate: 36000
     }
 }
 
-// export async function getStaticPaths(context) {
-//     const articleIdListData = await fetch(URL_PREFIX + "/articleIdList");
-//     const articleIdListDataJson = await articleIdListData.json();
-//     const articleIdList = articleIdListDataJson["data"];
+export async function getStaticPaths(context) {
+    const articleIdListData = await fetch(URL_PREFIX + "/articleIdList");
+    const articleIdListDataJson = await articleIdListData.json();
+    const articleIdList = articleIdListDataJson["data"];
 
-//     let paths = [];
-//     articleIdList.forEach(e => {
-//         const p = "/a/" + e;
-//         paths.push(p);
-//     });
+    let paths = [];
+    articleIdList.forEach(e => {
+        const p = "/a/" + e;
+        paths.push(p);
+    });
 
-//     return {
-//         paths: paths,
-//         fallback: false,
-//     }
-// }
+    return {
+        paths: paths,
+        fallback: "blocking",
+    }
+}
