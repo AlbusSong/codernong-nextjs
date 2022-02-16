@@ -53,7 +53,7 @@ export async function getStaticProps(context) {
         props: {
             articleDetail
         },
-        revalidate: 36000
+        revalidate: (3600 * 24 * 100)
     }
 }
 
