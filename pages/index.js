@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Footer from '../components/Footer.js';
 import NavArea from '../components/NavArea';
 import HomeCard from '../components/HomeCard';
-import { URL_PREFIX, LOCAL_URL_PREFIX } from '../zothers/GlobalVar';
+import { URL_PREFIX } from '../zothers/GlobalVar';
 // import { getRemoteURLPrefix } from '../zothers/GlobalTool';
 
 class Home extends React.Component {
@@ -98,7 +98,7 @@ export default Home;
 
 export async function getStaticProps(context) {
   // const theUrl = "http://127.0.0.1:9001/articles?page=0";
-  const theUrl = LOCAL_URL_PREFIX + "articles?page=0&exceptionIds=" + encodeURIComponent("0");
+  const theUrl = URL_PREFIX + "articles?page=0&exceptionIds=" + encodeURIComponent("0");
   const articlesData = await fetch(theUrl);
   const articlesJson = await articlesData.json();
   const initialArticleList = articlesJson["data"];

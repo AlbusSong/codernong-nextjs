@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Footer from '../../components/Footer.js';
 import NavArea from '../../components/NavArea';
 import ArticleBody from '../../components/ArticleBody';
-import { URL_PREFIX, LOCAL_URL_PREFIX } from '../../zothers/GlobalVar';
+import { URL_PREFIX } from '../../zothers/GlobalVar';
 
 class ArticleDetail extends React.Component {
     constructor(props) {
@@ -45,7 +45,7 @@ export async function getStaticProps(context) {
     let params = context.params;
     console.log("params:", params);
     const articleId = params.article;
-    const articleDetailData = await fetch(LOCAL_URL_PREFIX + "articleDetail?articleId=" + encodeURIComponent(articleId));
+    const articleDetailData = await fetch(URL_PREFIX + "articleDetail?articleId=" + encodeURIComponent(articleId));
     const articleDetailJson = await articleDetailData.json();
     const articleDetail = articleDetailJson["data"];
     // console.log("articleDetail:", articleDetail["zhDesc"]);
