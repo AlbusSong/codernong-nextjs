@@ -96,20 +96,20 @@ class Home extends React.Component {
 
 export default Home;
 
-// export async function getStaticProps(context) {
-//   // const theUrl = "http://127.0.0.1:9001/articles?page=0";
-//   const theUrl = URL_PREFIX + "articles?page=0&exceptionIds=" + encodeURIComponent("0");
-//   const articlesData = await fetch(theUrl);
-//   const articlesJson = await articlesData.json();
-//   const initialArticleList = articlesJson["data"];
+export async function getStaticProps(context) {
+  // const theUrl = "http://127.0.0.1:9001/articles?page=0";
+  const theUrl = URL_PREFIX + "articles?page=0&exceptionIds=" + encodeURIComponent("0");
+  const articlesData = await fetch(theUrl);
+  const articlesJson = await articlesData.json();
+  const initialArticleList = articlesJson["data"];
 
-//   return {
-//     props: {
-//       initialArticleList
-//     },
-//     revalidate: 3600
-//   }
-// }
+  return {
+    props: {
+      initialArticleList
+    },
+    revalidate: 3600
+  }
+}
 
 
 
