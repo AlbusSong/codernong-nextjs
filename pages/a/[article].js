@@ -58,7 +58,7 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths(context) {
-    const articleIdListData = await fetch(LOCAL_URL_PREFIX + "articleIdList?isFullList=0");
+    const articleIdListData = await fetch(URL_PREFIX + "articleIdList?isFullList=0");
     const articleIdListDataJson = await articleIdListData.json();
     const articleIdList = articleIdListDataJson["data"];
 
