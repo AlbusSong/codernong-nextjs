@@ -28,7 +28,7 @@ class ArticleDetail extends React.Component {
                     <meta name="author" content="codernong.com" />
                     <meta charset="UTF-8" />
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-                    <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+                    {/* <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" /> */}
                 </Head>
                 <NavArea />
                 <ArticleBody articleDetail={this.articleDetail} />
