@@ -65,13 +65,13 @@ class Home extends React.Component {
         <Head>
           <meta name="baidu-site-verification" content="code-xhQS7JO1Hs" />
           <title>程序员常见问题大典</title>
-          <meta name="description" content="这里汇集了绝大部分程序员开发过程中会遇到的技术问题, 涉及到各个技术分支, 如Python,git,javascript,html/css,移动端开发等等, 以帮助各位程序员开发者能够迅速解决常见的技术故障." />
+          {/* <meta name="description" content="这里汇集了绝大部分程序员开发过程中会遇到的技术问题, 涉及到各个技术分支, 如Python,git,javascript,html/css,移动端开发等等, 以帮助各位程序员开发者能够迅速解决常见的技术故障." />
           <link rel="icon" href="/codernongLogo.png" />
           <meta name="keywords" content="码农家园,IT工具网,程序员,开发,问题,编程,github,stackoverflow" />
           <meta name="author" content="codernong.com" />
           <meta charset="UTF-8" />
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-          <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+          <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" /> */}
         </Head>
 
         <NavArea />
