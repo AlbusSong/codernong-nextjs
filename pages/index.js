@@ -20,7 +20,7 @@ class Home extends React.Component {
 
   componentDidMount() {
     // getRemoteURLPrefix();
-    this.loadArticlesFromServer();
+    // this.loadArticlesFromServer();
   }
 
   tryToLoadMore() {
