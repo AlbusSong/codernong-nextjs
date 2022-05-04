@@ -28,7 +28,8 @@ class ArticleDetail extends React.Component {
                     <meta name="author" content="codernong.com" />
                     <meta charset="UTF-8" />
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-                    {/* <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" /> */}
+                    {/* Content-Security-Policy在非https环境下会导致渲染失败，所有有时候需要将下面这行注释 */}
+                    <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
                 </Head>
                 <NavArea />
                 <ArticleBody articleDetail={this.articleDetail} />
